@@ -47,7 +47,7 @@ void print_square_matrix(int** array, int size)
     std::cout << "\n";
 }
 
-int find_prime_numbers(int** matrix, int*primes, size_t size)
+int find_prime_numbers(int** matrix, int* primes, size_t size)
 {
     int counter = 0;
     for (int i = 0; i < size; i++) {
@@ -115,7 +115,7 @@ void run()
     matrix = NULL;
 
     free(primes);
-    matrix = NULL;
+    primes = NULL;
 }
 
 int main()
