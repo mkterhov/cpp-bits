@@ -131,6 +131,5 @@ int main()
 
     carSecond.printCarSummary();
 
-
     return 0;
 }

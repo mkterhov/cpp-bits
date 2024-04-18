@@ -5,21 +5,21 @@ class Matrix
 private:
     int rows = 0;
     int columns = 0;
-    int *store = nullptr;
+    int *ptr_matrix = nullptr;
 
     void swapElem(const int& x, const int& y)
     {
-        int temp = *((store + y * columns) + x);
-        *((store + y * columns) + x) = *((store + x * rows) + y);
-        *((store + x * rows) + y) = temp;
+        int temp = *((ptr_matrix + y * columns) + x);
+        *((ptr_matrix + y * columns) + x) = *((ptr_matrix + x * rows) + y);
+        *((ptr_matrix + x * rows) + y) = temp;
     }
 
 public:
-    Matrix(const int& crows, const int& ccols)
+    Matrix(const int& p_rows, const int& p_cols)
     {
-        rows =  crows;
-        columns =  ccols;
-        store = (int*)malloc(rows*columns*sizeof(int));
+        rows =  p_rows;
+        columns =  p_cols;
+        ptr_matrix = (int*)malloc(rows*columns*sizeof(int));
     }
 
     void populateMatrix() const
@@ -27,7 +27,7 @@ public:
         int counter = 1;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                *(store + i * columns + j) = counter;
+                *(ptr_matrix + i * columns + j) = counter;
                 counter++;
             }
         }
@@ -39,7 +39,7 @@ public:
             for (int j = 0; j < columns; j++) {
                 std::cout << "[" << i << "][" << j << "]: ";
 
-                std::cout << *(store + i * columns + j) << " ";
+                std::cout << *(ptr_matrix + i * columns + j) << " ";
             }
 
             std::cout << "\n";
@@ -66,8 +66,8 @@ public:
 
     ~Matrix()
     {
-        free(store);
-        store = nullptr;
+        free(ptr_matrix);
+        ptr_matrix = nullptr;
     }
 };
 
