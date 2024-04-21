@@ -5,13 +5,13 @@ class Matrix
 private:
     int rows = 0;
     int columns = 0;
-    int *ptr_matrix = nullptr;
+    int *matrix = nullptr;
 
     void swapElem(const int& x, const int& y)
     {
-        int temp = *((ptr_matrix + y * columns) + x);
-        *((ptr_matrix + y * columns) + x) = *((ptr_matrix + x * rows) + y);
-        *((ptr_matrix + x * rows) + y) = temp;
+        int temp = *((matrix + y * columns) + x);
+        *((matrix + y * columns) + x) = *((matrix + x * rows) + y);
+        *((matrix + x * rows) + y) = temp;
     }
 
 public:
@@ -19,7 +19,7 @@ public:
     {
         rows =  p_rows;
         columns =  p_cols;
-        ptr_matrix = (int*)malloc(rows*columns*sizeof(int));
+        matrix = (int*)malloc(rows*columns*sizeof(int));
     }
 
     void populateMatrix() const
@@ -27,7 +27,7 @@ public:
         int counter = 1;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                *(ptr_matrix + i * columns + j) = counter;
+                *(matrix + i * columns + j) = counter;
                 counter++;
             }
         }
@@ -39,7 +39,7 @@ public:
             for (int j = 0; j < columns; j++) {
                 std::cout << "[" << i << "][" << j << "]: ";
 
-                std::cout << *(ptr_matrix + i * columns + j) << " ";
+                std::cout << *(matrix + i * columns + j) << " ";
             }
 
             std::cout << "\n";
@@ -66,8 +66,8 @@ public:
 
     ~Matrix()
     {
-        free(ptr_matrix);
-        ptr_matrix = nullptr;
+        free(matrix);
+        matrix = nullptr;
     }
 };
 
