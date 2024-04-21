@@ -49,7 +49,7 @@ public:
     Matrix& operator+(const Matrix& m)
     {
         if (this->rows != m.rows || this->columns != m.columns) {
-            throw std::runtime_error("Cannot add two matrices with varied column or row sizes");
+            throw std::logic_error("Cannot add two matrices with varied column or row sizes");
         }
 
         std::cout << "calling assignment" << std::endl;
@@ -137,7 +137,7 @@ public:
     void transpose()
     {
         if (rows != columns) {
-            throw std::runtime_error("Cannot transpose the matrix when rows and columns are not equal");
+            throw std::logic_error("Cannot transpose the matrix when rows and columns are not equal");
         }
 
         for (int i = 0; i < rows; i++)
@@ -169,24 +169,20 @@ public:
 
 int main()
 {
-    Matrix matrix{ 4, 4 };
+    Matrix matrix1{ 4, 4 };
 
-    matrix.populate();
+    matrix1.populate();
     std::cout << "matrix 1 before assignment" << std::endl;
-    matrix.print();
-
+    matrix1.print();
 
     Matrix matrix2{ 3, 3 };
     matrix2.populate();
     std::cout << "matrix 2 before assignment" << std::endl;
     matrix2.print();
-    matrix2 = matrix;
+    matrix2 = matrix1;
 
-    matrix.transpose();
-    std::cout << "matrix 1 after transpose" << std::endl;
-
-    matrix.print();
-    std::cout << "matrix 2 after assignment to matrix" << std::endl;
+    matrix1.print();
+    std::cout << "matrix 2 after assignment to matrix 1" << std::endl;
     matrix2.print();
 
     Matrix matrix3(matrix2);
@@ -194,17 +190,16 @@ int main()
     std::cout << "matrix 3 after copy" << std::endl;
     matrix3.print();
 
-
-    matrix = matrix + matrix2;
-    std::cout << "print matrix1 after adding matrix 2" << std::endl;
-    matrix.print();
+    matrix1 = matrix1 + matrix2;
+    std::cout << "print matrix 1 after adding matrix 2" << std::endl;
+    matrix1.print();
 
     Matrix matrix4{ 100, 100 };
     matrix4.populate();
     try {
-            matrix4 = matrix4 + matrix;
+            matrix4 = matrix4 + matrix1;
     }
-    catch (std::runtime_error)
+    catch (std::runtime_error const&)
     {
         std::cout << "cannot add together different sized matrices" << std::endl;
     }
