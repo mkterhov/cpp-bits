@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "car.hpp"
+#include "../../car/car.hpp"
 
 class Truck : public Car
 {

@@ -1,23 +1,12 @@
 #include <iostream>
 #include <string>
 
-#include "car/car.hpp"
-#include "car/van.hpp"
-#include "car/sedan.hpp"
-#include "car/truck.hpp"
-#include "car/machinery.hpp"
+#include "car/truck/van.hpp"
+#include "car/passenger/sedan.hpp"
+#include "car/machinery/excavator.hpp"
 
 int main()
 {
-    Car car1{
-        "Aston Martin",
-        "DB5",
-        10000,
-        160000,
-        233,
-        1964
-    };
-    car1.printSummary();
     Van van{
         "Ford",
         "Transit",
@@ -27,23 +16,42 @@ int main()
         2010,
         2,
         2.5,
-        4
+        4,
+        200,
+        2
     };
     van.printSummary();
+    van.attachTrailer(2);
+    van.printSummary();
 
-    Truck truck{
-        "Ford",
-        "Transit",
+    Sedan sedan{
+        "Lexus",
+        "LS",
         120000,
         12300,
-        100,
+        200,
         2010,
-        2,
+        3,
         2.5,
-        4,
-        300
+        "saloon"
     };
-    truck.printSummary();
-    truck.attachTrailer(2);
-    truck.printSummary();
+    
+    sedan.printSummary();
+
+    Excavator excavator{
+        "Hyundai",
+        "ABCD1234",
+        300000,
+        40000,
+        30,
+        2020,
+        3,
+        6.0,
+        4.0,
+        "excavator",
+        "mud"
+    };
+    
+    excavator.printSummary();
+
 }

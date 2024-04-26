@@ -13,10 +13,6 @@ private:
     int m_maxSpeed = 0;
     int m_year = 0;
 public:
-    Car()
-    {
-
-    }
     Car(
         const std::string& p_manufacturer,
         const std::string& p_model,

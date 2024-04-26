@@ -1,5 +1,6 @@
-#include "excavator.hpp"
 #include  <algorithm>
+#include "excavator.hpp"
+
 const std::array<std::string, 4> Excavator::m_bucketTypes = {"mud", "tilt", "narrow", "standard"};
 
 bool Excavator::changeBucketType(std::string p_bucketType)
@@ -14,4 +15,12 @@ bool Excavator::changeBucketType(std::string p_bucketType)
     }
 
     return 0;
+}
+
+
+void Excavator::printSummary() const
+{
+
+    Machinery::printSummary();
+    std::cout << "Bucket type: " << m_bucket << "\n";
 }
