@@ -15,9 +15,6 @@ public:
         const int& p_price,
         const int& p_maxSpeed,
         const int& p_year,
-        const int& p_maxLoad,
-        const float& p_height,
-        const float& p_width,
         const std::string& p_type
     )
     :
