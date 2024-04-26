@@ -5,6 +5,7 @@
 #include "car/van.hpp"
 #include "car/sedan.hpp"
 #include "car/truck.hpp"
+#include "car/machinery.hpp"
 
 int main()
 {
