@@ -1,13 +1,12 @@
 #pragma once
 
 #include <string>
-#include "car.hpp"
+#include "passsengerCar.hpp"
 
-class Sedan : public Car
+class Sedan : public PassengerCar
 {
 private:
-    int m_passengers;
-    float m_fuelConsumption;
+    std::string  m_style;
 public:
     Sedan(
         const std::string& p_manufacturer,
@@ -17,15 +16,14 @@ public:
         const int& p_maxSpeed,
         const int& p_year,
         const int& p_passengers,
-        const float& p_fuelConsumption
+        const float& p_fuelConsumption,
+        const std::string& p_style
     )
     :
-    Car(p_manufacturer, p_model, p_mileage, p_price, p_maxSpeed, p_year),
-    m_passengers(p_passengers),
-    m_fuelConsumption(p_fuelConsumption)
+    PassengerCar(p_manufacturer, p_model, p_mileage, p_price, p_maxSpeed, p_year, p_passengers, p_fuelConsumption),
+    m_style(p_style)
     {
     }
 
     void printSummary() const;
-    float getFuelConsumption() const;
 };
